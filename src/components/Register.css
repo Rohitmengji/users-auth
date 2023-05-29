@@ -1,0 +1,31 @@
+.registration-container {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.registration-title {
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.registration-input {
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 16px;
+}
+
+.registration-button {
+    background-color: #4caf50;
+    color: white;
+    margin-left: 15px;
+    padding: 8px 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
