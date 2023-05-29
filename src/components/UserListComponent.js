@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { css } from "@emotion/react";
+import { RotateLoader } from "react-spinners";
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchUserList = async () => {
@@ -26,19 +30,46 @@ const UserList = () => {
           } else {
             throw new Error("Failed to fetch user list");
           }
+        } else {
+          throw new Error("User not logged in");
         }
       } catch (error) {
-        console.error(error);
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchUserList();
   }, []);
 
+  const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+  `;
+
+  if (isLoading) {
+    return (
+      <div className='loading-spinner'>
+        <RotateLoader
+          css={override}
+          color={"#000"}
+          loading={isLoading}
+          size={150}
+        />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
   return (
     <div>
       <h2>User List</h2>
-      
+
       <table className='table border'>
         <thead>
           <tr>

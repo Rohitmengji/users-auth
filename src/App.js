@@ -10,10 +10,19 @@ const App = () => {
   return (
     <div>
       <Routes>
+        {/* Route for the registration page */}
         <Route path='/' element={<RegistrationComponent />} />
+
+        {/* Route for the login page */}
         <Route path='/login' element={<LoginComponent />} />
+
+        {/* Route for the email verification page */}
         <Route path='/verify' element={<VerificationComponent />} />
+
+        {/* Route for the dashboard page */}
         <Route path='/dashboard' element={<Dashboard />} />
+
+        {/* Route for the user list page */}
         <Route path='/users' element={<UserListComponent />} />
       </Routes>
     </div>
